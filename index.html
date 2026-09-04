@@ -3,177 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ICA Motors dealership demo by I Computer Anything — inventory, service, detailing, financing, trade-in, appointments, and customer portal experience." />
-  <title>ICA Motors | Modern Dealership Experience</title>
+  <meta name="description" content="Grand Motor Gallery dealership demo by I Computer Anything — luxury inventory, service, trade-ins, detailing, appointments, and customer care." />
+  <title>Grand Motor Gallery | Luxury Automotive Experience</title>
   <style>
-    :root {
-      --bg:#07111f;
-      --panel:#0d1b2e;
-      --panel2:#10243b;
-      --line:rgba(255,255,255,.11);
-      --text:#f7fbff;
-      --muted:#9db1c8;
-      --blue:#2e86ff;
-      --cyan:#38d9ff;
-      --green:#2ed6a1;
-      --gold:#ffc857;
-      --danger:#ff5d73;
-      --shadow:0 24px 70px rgba(0,0,0,.35);
+    :root{
+      --ivory:#f6f1e8;--paper:#fffdf8;--ink:#171717;--muted:#6d675f;--line:#d9d2c8;--bronze:#8a6845;--bronze2:#b08a63;--forest:#31463c;--soft:#ebe4da;--shadow:0 18px 50px rgba(46,37,28,.12)
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top right,rgba(46,134,255,.18),transparent 30%),linear-gradient(180deg,#06101d 0%,#081523 35%,#06101d 100%);color:var(--text)}
-    a{text-decoration:none;color:inherit}
-    button,input,select,textarea{font:inherit}
-    .wrap{width:min(1180px,calc(100% - 32px));margin:0 auto}
-    .topbar{position:sticky;top:0;z-index:50;background:rgba(6,16,29,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.08em}
-    .brandmark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:white;box-shadow:0 0 32px rgba(56,217,255,.2)}
-    .navlinks{display:flex;gap:20px;color:#c8d6e5;font-size:14px}
-    .actions{display:flex;gap:10px;align-items:center}
-    .btn{border:1px solid var(--line);background:rgba(255,255,255,.05);color:white;border-radius:12px;padding:12px 16px;cursor:pointer;transition:.2s}
-    .btn:hover{transform:translateY(-1px);border-color:rgba(56,217,255,.45)}
-    .btn.primary{background:linear-gradient(135deg,var(--blue),#1b62d8);border-color:transparent;font-weight:800}
-    .btn.green{background:linear-gradient(135deg,#24b886,var(--green));border-color:transparent;color:#04140f;font-weight:900}
-    .hero{padding:84px 0 44px}
-    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:center}
-    .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:800}
-    h1{font-size:clamp(44px,7vw,82px);line-height:.96;margin:16px 0 20px;letter-spacing:-.05em}
-    .hero p{font-size:18px;line-height:1.7;color:var(--muted);max-width:680px}
-    .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-    .hero-card{min-height:460px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,rgba(16,36,59,.92),rgba(6,15,27,.92));box-shadow:var(--shadow);padding:24px;position:relative;overflow:hidden}
-    .hero-card:before{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(46,134,255,.18);filter:blur(22px);right:-120px;top:-110px}
-    .vehicle{position:relative;height:220px;margin-top:34px;display:grid;place-items:center}
-    .car-shape{width:86%;height:112px;border-radius:70px 90px 34px 34px;background:linear-gradient(180deg,#e9f4ff 0%,#7ea6c7 48%,#1b2f44 50%,#0c1724 100%);position:relative;box-shadow:0 30px 40px rgba(0,0,0,.4)}
-    .car-shape:before{content:"";position:absolute;left:20%;right:20%;top:-48px;height:72px;border-radius:70px 70px 12px 12px;background:linear-gradient(135deg,#9bc8e8,#27415c)}
-    .wheel{position:absolute;width:58px;height:58px;background:#05090f;border:9px solid #2b3948;border-radius:50%;bottom:-20px}
-    .wheel.one{left:13%}.wheel.two{right:13%}
-    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
-    .stat{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:16px;padding:14px}.stat b{display:block;font-size:19px}.stat span{font-size:12px;color:var(--muted)}
-    section{padding:72px 0}
-    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:26px}.section-head h2{font-size:36px;margin:8px 0}.section-head p{max-width:620px;color:var(--muted);line-height:1.7}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,36,59,.82),rgba(8,20,34,.85));border-radius:20px;padding:20px;box-shadow:0 12px 34px rgba(0,0,0,.18)}
-    .card h3{margin:12px 0 8px}.card p{color:var(--muted);line-height:1.6;font-size:14px}.icon{font-size:28px}.tag{display:inline-flex;border:1px solid rgba(56,217,255,.25);background:rgba(56,217,255,.07);color:#bfeeff;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-    .inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.car-card{overflow:hidden;padding:0}.car-photo{height:180px;background:linear-gradient(135deg,#223e5f,#0a1829);display:grid;place-items:center;position:relative}.mini-car{width:70%;height:62px;border-radius:44px 55px 18px 18px;background:linear-gradient(180deg,#f3f7fb,#7290aa 50%,#162638 51%);position:relative}.mini-car:before{content:"";position:absolute;left:23%;right:23%;top:-27px;height:40px;border-radius:40px 40px 8px 8px;background:#4d6c88}.badge{position:absolute;top:14px;left:14px;background:#07111f;border:1px solid var(--line);padding:7px 10px;border-radius:999px;font-size:11px}.car-content{padding:18px}.car-content h3{margin:0 0 8px}.price{font-size:22px;font-weight:900;margin:10px 0}.specs{display:flex;flex-wrap:wrap;gap:7px;color:var(--muted);font-size:12px}.specs span{border:1px solid var(--line);padding:6px 8px;border-radius:8px}.car-actions{display:flex;gap:8px;margin-top:14px}.car-actions .btn{flex:1;padding:10px 12px;font-size:13px}
-    .feature-panel{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{border:1px solid var(--line);border-radius:24px;padding:26px;background:rgba(13,27,46,.82)}.panel ul{padding-left:18px;color:var(--muted);line-height:1.9}
-    .team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.person{text-align:center}.avatar{height:150px;border-radius:18px;background:linear-gradient(135deg,#1d3855,#0b1727);display:grid;place-items:center;font-size:58px;margin-bottom:14px}.person small{color:var(--cyan)}
-    .appointment-shell{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}.portal{border:1px solid rgba(56,217,255,.25);background:linear-gradient(160deg,rgba(13,27,46,.95),rgba(5,14,25,.96));border-radius:26px;padding:28px}.login-box{margin-top:24px;border:1px solid var(--line);border-radius:18px;padding:18px;background:rgba(255,255,255,.03)}
-    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:#c6d5e6}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#081522;color:white;border-radius:12px;padding:12px 13px;outline:none}.field textarea{min-height:104px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(56,217,255,.5)}
-    .success{display:none;margin-top:16px;border:1px solid rgba(46,214,161,.35);background:rgba(46,214,161,.08);padding:14px;border-radius:12px;color:#bdf6df}
-    .map-modal,.login-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:18px}.modal-card{width:min(720px,100%);background:#091625;border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow)}.map-box{height:360px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,#16334d,#0a1725);display:grid;place-items:center;text-align:center;padding:24px}.map-grid{width:100%;height:100%;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px;border-radius:12px;display:grid;place-items:center}.pin{font-size:50px}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.close{background:transparent;color:white;border:1px solid var(--line);width:36px;height:36px;border-radius:50%;cursor:pointer}
-    .footer{border-top:1px solid var(--line);padding:34px 0 48px;color:var(--muted)}.footer-grid{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
-    @media(max-width:900px){.navlinks{display:none}.hero-grid,.feature-panel,.appointment-shell{grid-template-columns:1fr}.grid,.team{grid-template-columns:repeat(2,1fr)}.inventory{grid-template-columns:1fr 1fr}.hero-card{min-height:auto}}
-    @media(max-width:620px){.actions .btn:not(.primary){display:none}.grid,.team,.inventory,.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.hero{padding-top:54px}.hero-stats{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.car-actions{flex-direction:column}}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ivory);color:var(--ink);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(1240px,calc(100% - 36px));margin:auto}
+    header{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{font-family:Georgia,'Times New Roman',serif;font-size:25px;letter-spacing:.08em}.brand span{display:block;font-family:Arial,Helvetica,sans-serif;font-size:9px;letter-spacing:.3em;color:var(--bronze);margin-top:4px}.navlinks{display:flex;gap:26px;font-size:13px;text-transform:uppercase;letter-spacing:.1em}.navlinks a:hover{color:var(--bronze)}.nav-actions{display:flex;gap:10px}.btn{border:1px solid var(--ink);background:transparent;padding:12px 17px;cursor:pointer;text-transform:uppercase;letter-spacing:.09em;font-size:11px}.btn.fill{background:var(--ink);color:white}.btn.bronze{background:var(--bronze);border-color:var(--bronze);color:white}.btn:hover{transform:translateY(-1px)}
+    .hero{padding:28px 0 70px}.hero-photo{min-height:650px;position:relative;overflow:hidden;background:#ddd url('https://images.unsplash.com/photo-1780147264753-f77944703eb3?auto=format&fit=crop&fm=jpg&q=82&w=2200') center/cover no-repeat}.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,13,11,.58),rgba(15,13,11,.08) 62%,rgba(15,13,11,.08))}.hero-copy{position:absolute;z-index:2;left:clamp(28px,7vw,92px);bottom:clamp(34px,7vw,88px);max-width:670px;color:white}.kicker{text-transform:uppercase;letter-spacing:.28em;font-size:11px;color:#e9d8c3;font-weight:700}.hero h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(58px,8.5vw,112px);line-height:.88;margin:18px 0 24px;font-weight:500;letter-spacing:-.04em}.hero p{font-size:18px;line-height:1.65;max-width:600px;color:#f1eee9}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.hero-buttons .btn{border-color:white;color:white}.hero-buttons .btn.fill{background:white;color:#111}.strip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper);border:1px solid var(--line);border-top:0}.strip div{padding:22px 24px;border-right:1px solid var(--line)}.strip div:last-child{border-right:0}.strip b{display:block;font-family:Georgia,serif;font-size:23px;font-weight:500}.strip span{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+    section{padding:84px 0}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:36px}.section-head h2{font-family:Georgia,serif;font-size:clamp(40px,5vw,66px);font-weight:500;line-height:1;margin:8px 0}.section-head p{max-width:560px;line-height:1.7;color:var(--muted)}
+    .inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.vehicle-card{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow)}.vehicle-card img{width:100%;height:285px;object-fit:cover;display:block}.vehicle-body{padding:22px}.vehicle-body small{color:var(--bronze);text-transform:uppercase;letter-spacing:.14em}.vehicle-body h3{font-family:Georgia,serif;font-size:27px;font-weight:500;margin:10px 0}.vehicle-body p{color:var(--muted);line-height:1.6;font-size:14px}.vehicle-meta{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px;margin-top:18px}.vehicle-meta b{font-size:13px;text-transform:uppercase;letter-spacing:.08em}.vehicle-meta a{font-size:12px;color:var(--bronze);font-weight:700}
+    .editorial{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}.editorial img{width:100%;height:560px;object-fit:cover}.editorial-copy{background:#ded3c2;padding:clamp(34px,6vw,76px);display:flex;flex-direction:column;justify-content:center}.editorial-copy h2{font-family:Georgia,serif;font-size:clamp(42px,5vw,68px);font-weight:500;line-height:1;margin:14px 0 24px}.editorial-copy p{line-height:1.8;color:#51493f}.list{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid rgba(0,0,0,.18);margin-top:24px}.list div{padding:18px 0;border-bottom:1px solid rgba(0,0,0,.18);font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+    .services{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--paper)}.service{padding:30px;min-height:230px;border-right:1px solid var(--line)}.service:last-child{border-right:0}.service .num{font-family:Georgia,serif;font-size:40px;color:var(--bronze2)}.service h3{font-family:Georgia,serif;font-size:24px;font-weight:500;margin:26px 0 10px}.service p{color:var(--muted);line-height:1.65;font-size:14px}
+    .appointment{background:var(--forest);color:white}.appointment .section-head p{color:#d2ddd6}.appointment-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px}.contact-panel{padding:30px 0}.contact-panel h3{font-family:Georgia,serif;font-size:34px;font-weight:500}.contact-panel p{color:#d2ddd6;line-height:1.8}.form{background:#fff;color:var(--ink);padding:30px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.field input,.field select,.field textarea{border:0;border-bottom:1px solid #bfb6aa;background:transparent;padding:11px 2px;outline:none}.field textarea{min-height:92px;resize:vertical}.success{display:none;background:#ecf5ef;border:1px solid #bfd7c8;color:#234d35;padding:13px;margin-top:16px}
+    footer{padding:42px 0;border-top:1px solid var(--line);background:var(--paper)}.footer-grid{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}.footer-grid p{color:var(--muted);max-width:620px;line-height:1.6;font-size:13px}.credit{font-size:11px;color:var(--muted)}
+    .modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(24,21,18,.72);z-index:100;padding:20px}.modal-card{width:min(620px,100%);background:var(--paper);padding:28px;box-shadow:var(--shadow)}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head h3{font-family:Georgia,serif;font-size:32px;font-weight:500;margin:0}.close{border:0;background:none;font-size:28px;cursor:pointer}.modal-card p{color:var(--muted);line-height:1.7}
+    @media(max-width:900px){.navlinks{display:none}.inventory{grid-template-columns:1fr 1fr}.editorial,.appointment-grid{grid-template-columns:1fr}.services{grid-template-columns:1fr 1fr}.service:nth-child(2){border-right:0}.service{border-bottom:1px solid var(--line)}.hero-photo{min-height:590px}.strip{grid-template-columns:1fr 1fr}.strip div:nth-child(2){border-right:0}.strip div{border-bottom:1px solid var(--line)}}
+    @media(max-width:620px){.nav-actions .btn:first-child{display:none}.brand{font-size:19px}.hero{padding-top:16px}.hero-photo{min-height:540px}.hero h1{font-size:54px}.inventory,.services,.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.service{border-right:0}.section-head{align-items:start;flex-direction:column}.editorial img{height:380px}.strip{grid-template-columns:1fr}.strip div{border-right:0}.vehicle-card img{height:245px}}
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap nav">
-      <a class="brand" href="#top"><span class="brandmark">ICA</span><span>ICA MOTORS</span></a>
-      <nav class="navlinks">
-        <a href="#inventory">Inventory</a><a href="#departments">Departments</a><a href="#service">Service</a><a href="#team">Our Team</a><a href="#appointments">Appointments</a>
-      </nav>
-      <div class="actions">
-        <button class="btn" onclick="openMap()">Location</button>
-        <button class="btn primary" onclick="openLogin()">Customer Login</button>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">GRAND MOTOR GALLERY<span>AN I COMPUTER ANYTHING EXPERIENCE</span></a>
+    <nav class="navlinks"><a href="#inventory">Collection</a><a href="#experience">Experience</a><a href="#services">Services</a><a href="#appointments">Appointments</a></nav>
+    <div class="nav-actions"><button class="btn" onclick="openLocation()">Visit</button><button class="btn fill" onclick="document.getElementById('appointments').scrollIntoView()">Concierge</button></div>
+  </div>
+</header>
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-photo">
+        <div class="hero-copy">
+          <div class="kicker">Curated automotive retail</div>
+          <h1>Drive something unforgettable.</h1>
+          <p>A dealership concept built around premium presentation, real vehicle imagery, concierge-level service, trade-ins, detailing, financing, and a polished ownership experience.</p>
+          <div class="hero-buttons"><a class="btn fill" href="#inventory">Explore Collection</a><a class="btn" href="#appointments">Book a Private Visit</a></div>
+        </div>
+      </div>
+      <div class="strip"><div><b>Premium</b><span>curated inventory</span></div><div><b>Private</b><span>appointment experience</span></div><div><b>Complete</b><span>service + detailing</span></div><div><b>Connected</b><span>digital customer care</span></div></div>
+    </div>
+  </section>
+
+  <section id="inventory">
+    <div class="wrap">
+      <div class="section-head"><div><div class="kicker" style="color:var(--bronze)">Featured collection</div><h2>Cars worth arriving in.</h2></div><p>This portfolio demo uses real automotive photography rather than placeholder drawings so the experience feels like a finished dealership brand from the first scroll.</p></div>
+      <div class="inventory">
+        <article class="vehicle-card"><img src="https://images.unsplash.com/photo-1780147264753-f77944703eb3?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="White Mercedes-Benz luxury sedan"><div class="vehicle-body"><small>Luxury sedan</small><h3>Mercedes-Benz Selection</h3><p>Refined executive styling presented with a clean showroom-first shopping experience.</p><div class="vehicle-meta"><b>Request price</b><a href="#appointments">Arrange viewing →</a></div></div></article>
+        <article class="vehicle-card"><img src="https://images.unsplash.com/photo-1769641156738-d654911bbc36?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Dark grey Audi SUV"><div class="vehicle-body"><small>Luxury SUV</small><h3>Audi Q5 Selection</h3><p>Modern utility and premium presentation for clients shopping a versatile daily luxury vehicle.</p><div class="vehicle-meta"><b>Request price</b><a href="#appointments">Arrange viewing →</a></div></div></article>
+        <article class="vehicle-card"><img src="https://images.unsplash.com/photo-1778942860579-908cce790116?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="BMW performance sedan"><div class="vehicle-body"><small>Performance</small><h3>BMW M Selection</h3><p>A performance-focused presentation designed for enthusiasts who want an elevated buying experience.</p><div class="vehicle-meta"><b>Request price</b><a href="#appointments">Arrange viewing →</a></div></div></article>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Dealership experience by I Computer Anything</div>
-          <h1>More than a place to buy a car.</h1>
-          <p>ICA Motors is a full dealership experience built around inventory, financing, service, detailing, customer appointments, trade-ins, vehicle delivery, and a modern client portal.</p>
-          <div class="hero-cta">
-            <a class="btn primary" href="#inventory">Shop Vehicles</a>
-            <a class="btn" href="#appointments">Schedule Appointment</a>
-            <button class="btn" onclick="openLogin()">Sign In</button>
-          </div>
-        </div>
-        <div class="hero-card">
-          <span class="tag">Featured arrival</span>
-          <div class="vehicle"><div class="car-shape"><span class="wheel one"></span><span class="wheel two"></span></div></div>
-          <h3 style="font-size:28px;margin-bottom:8px">2026 ICA Grand Touring EV</h3>
-          <div style="color:var(--muted)">Premium electric SUV • AWD • 312-mile estimated range</div>
-          <div class="hero-stats"><div class="stat"><b>$49,980</b><span>Demo MSRP</span></div><div class="stat"><b>1.9%</b><span>Promo APR</span></div><div class="stat"><b>Today</b><span>Test drive</span></div></div>
-        </div>
+  <section id="experience">
+    <div class="wrap editorial">
+      <img src="https://images.unsplash.com/photo-1779301523210-9226fc66ef71?auto=format&fit=crop&fm=jpg&q=82&w=1600" alt="Red Ferrari Roma inside a modern showroom">
+      <div class="editorial-copy"><div class="kicker" style="color:var(--bronze)">The gallery experience</div><h2>No fluorescent lot. No clutter.</h2><p>Grand Motor Gallery is designed like a premium hospitality brand, not a template dealership. The digital experience gives the customer a calm place to browse, ask questions, book time, and move from interest to ownership without visual noise.</p><div class="list"><div>Private viewings</div><div>Trade-in review</div><div>Detail studio</div><div>Finance support</div><div>Vehicle sourcing</div><div>Home delivery</div></div></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head"><div><div class="kicker" style="color:var(--bronze)">Beyond the sale</div><h2>One relationship. Full ownership support.</h2></div><p>The platform is structured to support departments that keep the dealership useful long after the customer drives away.</p></div>
+      <div class="services"><article class="service"><div class="num">01</div><h3>Service Center</h3><p>Maintenance, diagnostics, inspections, tire work, repair scheduling, and customer updates.</p></article><article class="service"><div class="num">02</div><h3>Detail Studio</h3><p>Interior and exterior care, paint correction, ceramic protection, and premium detailing packages.</p></article><article class="service"><div class="num">03</div><h3>Trade & Finance</h3><p>Trade-in intake, finance consultation, document preparation, and customer follow-up workflows.</p></article><article class="service"><div class="num">04</div><h3>Concierge</h3><p>Vehicle sourcing, private appointments, pickup and delivery coordination, and ownership support.</p></article></div>
+    </div>
+  </section>
+
+  <section class="appointment" id="appointments">
+    <div class="wrap">
+      <div class="section-head"><div><div class="kicker">Private appointment</div><h2>Tell us what you want to drive.</h2></div><p>This front-end portfolio experience demonstrates the customer intake flow. A production version can connect to Cloudflare, email, CRM, inventory, payments, and authenticated customer accounts.</p></div>
+      <div class="appointment-grid">
+        <div class="contact-panel"><h3>Motor concierge</h3><p>Schedule a showroom visit, test drive, trade-in consultation, service appointment, detailing package, or sourcing request.</p><p><strong>Grand Motor Gallery</strong><br>Washington metropolitan area<br>Private visits by appointment</p><button class="btn" style="color:white;border-color:white" onclick="openLocation()">Location Preview</button></div>
+        <form class="form" id="appointmentForm"><div class="field-grid"><div class="field"><label>Name</label><input required name="name"></div><div class="field"><label>Email</label><input required type="email" name="email"></div><div class="field"><label>Department</label><select name="department"><option>Vehicle Sales</option><option>Service</option><option>Detail Studio</option><option>Trade-In</option><option>Finance</option><option>Vehicle Sourcing</option></select></div><div class="field"><label>Preferred Date</label><input type="date" name="date"></div><div class="field full"><label>What can we help with?</label><textarea name="details" placeholder="Tell us the vehicle, service, or appointment you have in mind."></textarea></div></div><button class="btn bronze" type="submit" style="margin-top:22px">Request Appointment</button><div class="success" id="success">Request captured for the demo. A production build would send this to the dealership backend and customer notification flow.</div></form>
       </div>
-    </section>
-
-    <section id="departments">
-      <div class="wrap">
-        <div class="section-head"><div><div class="eyebrow">Everything under one roof</div><h2>Dealership departments</h2></div><p>Instead of a basic sales site, this demo shows how one dealership can connect sales, ownership, service, and customer care from the same digital front door.</p></div>
-        <div class="grid">
-          <article class="card"><div class="icon">🚘</div><h3>New Vehicles</h3><p>Current models, trims, incentives, test-drive requests, and payment-focused shopping.</p></article>
-          <article class="card"><div class="icon">🔑</div><h3>Used & Certified</h3><p>Pre-owned inventory with condition details, history notes, mileage, and transparent pricing.</p></article>
-          <article class="card"><div class="icon">🧰</div><h3>Service Center</h3><p>Maintenance, repairs, inspections, tire work, diagnostics, and appointment scheduling.</p></article>
-          <article class="card"><div class="icon">✨</div><h3>Detail Studio</h3><p>Interior/exterior detailing, ceramic coating, paint correction, odor treatment, and premium packages.</p></article>
-          <article class="card"><div class="icon">🫧</div><h3>Car Wash Club</h3><p>Single washes, monthly plans, express lane memberships, and service-visit wash add-ons.</p></article>
-          <article class="card"><div class="icon">💳</div><h3>Finance Center</h3><p>Pre-qualification, payment estimates, lender workflow, protection products, and online applications.</p></article>
-          <article class="card"><div class="icon">🔄</div><h3>Trade-In Center</h3><p>Start a trade appraisal online, upload vehicle details, and receive a dealership follow-up.</p></article>
-          <article class="card"><div class="icon">🚚</div><h3>Home Delivery</h3><p>Reserve a vehicle, complete paperwork, choose a delivery window, and track handoff status.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="inventory">
-      <div class="wrap">
-        <div class="section-head"><div><div class="eyebrow">Live-style inventory demo</div><h2>Featured vehicles</h2></div><a class="btn" href="#appointments">Book a test drive</a></div>
-        <div class="inventory">
-          <article class="card car-card"><div class="car-photo"><span class="badge">NEW</span><div class="mini-car"></div></div><div class="car-content"><h3>2026 Meridian X5</h3><div class="specs"><span>AWD</span><span>Automatic</span><span>28 MPG</span></div><div class="price">$38,450</div><div class="car-actions"><a class="btn primary" href="#appointments">Test Drive</a><button class="btn" onclick="openLogin()">Save</button></div></div></article>
-          <article class="card car-card"><div class="car-photo"><span class="badge">CERTIFIED</span><div class="mini-car"></div></div><div class="car-content"><h3>2024 Horizon Sport</h3><div class="specs"><span>18k mi</span><span>FWD</span><span>1 owner</span></div><div class="price">$26,990</div><div class="car-actions"><a class="btn primary" href="#appointments">Test Drive</a><button class="btn" onclick="openLogin()">Save</button></div></div></article>
-          <article class="card car-card"><div class="car-photo"><span class="badge">EV</span><div class="mini-car"></div></div><div class="car-content"><h3>2026 Volta GT</h3><div class="specs"><span>Electric</span><span>312 mi</span><span>AWD</span></div><div class="price">$49,980</div><div class="car-actions"><a class="btn primary" href="#appointments">Test Drive</a><button class="btn" onclick="openLogin()">Save</button></div></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="service">
-      <div class="wrap feature-panel">
-        <div class="panel"><div class="eyebrow">Service & ownership</div><h2>Keep customers after the sale.</h2><p style="color:var(--muted);line-height:1.7">The customer relationship should not end when the keys are handed over. The ownership side of ICA Motors is designed to keep customers connected to the dealership.</p><ul><li>Schedule maintenance and repairs</li><li>See recommended service intervals</li><li>Request pickup/drop-off service</li><li>Add detailing or wash service</li><li>View service history in a customer portal</li></ul><a class="btn primary" href="#appointments">Schedule Service</a></div>
-        <div class="panel"><div class="eyebrow">Standout dealership ideas</div><h2>Extra experiences</h2><ul><li><strong>Shop by monthly payment:</strong> inventory filtering around customer budget.</li><li><strong>Salesperson pages:</strong> customers can book directly with a preferred team member.</li><li><strong>Vehicle concierge:</strong> pickup, delivery, registration, and handoff workflow.</li><li><strong>Referral rewards:</strong> track referrals and dealership credits.</li><li><strong>Fleet & business sales:</strong> dedicated commercial buyer department.</li><li><strong>EV ownership center:</strong> charging help, incentives, setup, and education.</li></ul></div>
-      </div>
-    </section>
-
-    <section id="team">
-      <div class="wrap"><div class="section-head"><div><div class="eyebrow">People matter</div><h2>Meet the dealership team</h2></div><p>Give every department a face. Customers can choose who they want to work with and schedule directly with that department.</p></div>
-        <div class="team"><article class="card person"><div class="avatar">👨🏾‍💼</div><h3>Marcus Reed</h3><small>Sales Manager</small><p>New vehicles, trade-ins, and purchase planning.</p><a class="btn" href="#appointments">Book Marcus</a></article><article class="card person"><div class="avatar">👩🏽‍💼</div><h3>Danielle Cruz</h3><small>Finance Manager</small><p>Finance applications, payment planning, and protection options.</p><a class="btn" href="#appointments">Book Danielle</a></article><article class="card person"><div class="avatar">👨🏻‍🔧</div><h3>Alex Morgan</h3><small>Service Advisor</small><p>Maintenance, repairs, inspections, and service estimates.</p><a class="btn" href="#appointments">Book Alex</a></article><article class="card person"><div class="avatar">🧼</div><h3>Taylor Brooks</h3><small>Detail Studio</small><p>Detailing, coatings, paint care, and premium wash packages.</p><a class="btn" href="#appointments">Book Taylor</a></article></div>
-      </div>
-    </section>
-
-    <section id="appointments">
-      <div class="wrap appointment-shell">
-        <div class="portal"><div class="eyebrow">Customer portal experience</div><h2>One login for your whole dealership relationship.</h2><p style="color:var(--muted);line-height:1.7">A real deployment could connect saved vehicles, finance progress, service history, appointments, documents, vehicle delivery, messages, and dealership rewards.</p><div class="login-box"><span class="tag">Portal preview</span><h3>Welcome back, Customer</h3><p style="color:var(--muted)">2 saved vehicles • Next service due in 1,420 miles • 1 upcoming appointment</p><button class="btn primary" onclick="openLogin()">Open Customer Login</button></div><button class="btn" style="margin-top:12px" onclick="openMap()">View Dealership Location</button></div>
-        <form class="portal" id="appointmentForm"><div class="eyebrow">Schedule online</div><h2>Book an appointment</h2><div class="field-grid">
-          <div class="field"><label>Full name</label><input required name="name" placeholder="Your name"></div><div class="field"><label>Email</label><input required type="email" name="email" placeholder="you@example.com"></div>
-          <div class="field"><label>Department</label><select required name="department"><option value="">Choose...</option><option>New Vehicle Sales</option><option>Used Vehicle Sales</option><option>Service Department</option><option>Detail Studio</option><option>Car Wash</option><option>Finance Center</option><option>Trade-In Appraisal</option><option>Fleet / Business Sales</option></select></div>
-          <div class="field"><label>Appointment type</label><select required name="type"><option>In Person</option><option>Phone Call</option><option>Video Consultation</option><option>Vehicle Pickup / Drop-Off</option><option>Home Delivery Consultation</option></select></div>
-          <div class="field"><label>Date</label><input required type="date" name="date"></div><div class="field"><label>Preferred time</label><select required name="time"><option>9:00 AM</option><option>10:30 AM</option><option>12:00 PM</option><option>2:00 PM</option><option>3:30 PM</option><option>5:00 PM</option></select></div>
-          <div class="field full"><label>Vehicle / request details</label><textarea name="details" placeholder="Tell the dealership what vehicle or service you are interested in..."></textarea></div>
-        </div><button class="btn green" type="submit" style="width:100%;margin-top:14px">Submit Appointment Request</button><div class="success" id="appointmentSuccess">✓ Appointment request submitted. In a production deployment, the dealership would now receive this request and the customer would receive confirmation.</div></form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer"><div class="wrap footer-grid"><div><strong style="color:white">ICA MOTORS</strong><div style="margin-top:8px">Automotive dealership platform demo by I Computer Anything.</div></div><div>New • Used • Service • Detail • Wash • Finance • Delivery</div></div></footer>
-
-  <div class="map-modal" id="mapModal"><div class="modal-card"><div class="modal-head"><div><div class="eyebrow">Dealership location</div><h3 style="margin:6px 0">ICA Motors Demo Location</h3></div><button class="close" onclick="closeMap()">×</button></div><div class="map-box"><div class="map-grid"><div><div class="pin">📍</div><strong>Washington, D.C. Metro Area</strong><div style="color:var(--muted);margin-top:6px">Map pop-out demo • OpenStreetMap-ready for production</div></div></div></div></div></div>
-
-  <div class="login-modal" id="loginModal"><div class="modal-card" style="max-width:480px"><div class="modal-head"><div><div class="eyebrow">Secure customer portal</div><h3 style="margin:6px 0">ICA Motors Login</h3></div><button class="close" onclick="closeLogin()">×</button></div><div class="field" style="margin-bottom:12px"><label>Email</label><input type="email" placeholder="customer@example.com"></div><div class="field"><label>Password</label><input type="password" placeholder="••••••••"></div><button class="btn primary" style="width:100%;margin-top:14px" onclick="demoLogin()">Sign In</button><p style="font-size:12px;color:var(--muted);line-height:1.5">Demo interface only. Production login can connect to Cloudflare authentication and a dealership customer database.</p></div></div>
-
-  <script>
-    const mapModal=document.getElementById('mapModal');
-    const loginModal=document.getElementById('loginModal');
-    function openMap(){mapModal.style.display='flex'} function closeMap(){mapModal.style.display='none'}
-    function openLogin(){loginModal.style.display='flex'} function closeLogin(){loginModal.style.display='none'}
-    function demoLogin(){alert('Demo login: production authentication would connect to the dealership backend/customer portal.');}
-    mapModal.addEventListener('click',e=>{if(e.target===mapModal)closeMap()});
-    loginModal.addEventListener('click',e=>{if(e.target===loginModal)closeLogin()});
-    document.getElementById('appointmentForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('appointmentSuccess').style.display='block';e.target.reset();});
-  </script>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-grid"><div><div class="brand">GRAND MOTOR GALLERY<span>DEALERSHIP EXPERIENCE DEMO</span></div><p>Designed and developed by I Computer Anything as a polished automotive portfolio concept. Production integrations can include inventory APIs, CRM, cloud databases, authenticated portals, payments, messaging, and analytics.</p></div><div class="credit">Automotive photography via Unsplash.<br>Demo only; no affiliation with pictured vehicle manufacturers.</div></div></footer>
+<div class="modal" id="locationModal"><div class="modal-card"><div class="modal-head"><h3>Visit the Gallery</h3><button class="close" onclick="closeLocation()">×</button></div><p>This demo location panel represents where a production dealership could embed OpenStreetMap, directions, hours, and contact information.</p><div style="height:260px;background:#d9d2c8;display:grid;place-items:center;font-family:Georgia,serif;font-size:28px;text-align:center;padding:24px">Washington Metropolitan Area<br><span style="font-family:Arial;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-top:10px">Private showroom visits by appointment</span></div></div></div>
+<script>
+  const form=document.getElementById('appointmentForm');form.addEventListener('submit',e=>{e.preventDefault();document.getElementById('success').style.display='block';form.scrollIntoView({behavior:'smooth',block:'center'})});
+  function openLocation(){document.getElementById('locationModal').style.display='grid'}function closeLocation(){document.getElementById('locationModal').style.display='none'}
+  document.getElementById('locationModal').addEventListener('click',e=>{if(e.target.id==='locationModal')closeLocation()});
+</script>
 </body>
 </html>
